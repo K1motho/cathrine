@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bakery Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="navlinks">
+      <li><a href="#">Ingredient Cost</a></li>
+      <li><a href="#">Sale Report</a></li>
+      <li><a href="#">Financial Summary</a></li>
+    </ul>
+  </nav>
+
+  <!-- Expense Calculator -->
+  <section class="card">
+    <h2>Ingredient Cost</h2>
+    <div class="form-row">
+      <label for="expense">Expense Description</label>
+      <input type="text" id="expense" placeholder="Expense" />
+
+      <label for="amount">Amount Spent</label>
+      <input type="number" id="amount" placeholder="Amount Spent" />
+
+      <button id="addExpense">Add Expense</button>
+    </div>
+  </section>
+
+  <!-- Sale Report -->
+  <section class="card">
+    <h2>Sale Report</h2>
+    <div class="form-row">
+      <input type="date" id="Saledate" />
+      <select id="products">
+        <option value="cake">Cake</option>
+        <option value="cookies">Cookies</option>
+        <option value="pastry">Pastry</option>
+      </select>
+      <input type="number" id="quantitySold" placeholder="Quantity Sold" />
+      <input type="number" id="price" placeholder="Sale Price" />
+      <button id="addSale">Add Sale</button>
+    </div>
+
+    <div id="salesReport">
+      <canvas id="salesChart"></canvas>
+      <table id="salesTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data rows will go here -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Financial Summary -->
+  <section class="card">
+    <h3>Financial Summary</h3>
+    <ul>
+      <li><p id="totalExpenditure">Total Expenditure: $0.00</p></li>
+      <li><p id="totalsale">Total Sales: $0.00</p></li>
+      <li><p id="totalRemainder">Remainder: $0.00</p></li>
+    </ul>
+  </section>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
