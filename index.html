@@ -1,80 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bakery Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-semibold text-pink-600">Sweet Delights</a>
+            <div class="space-x-4">
+                <a href="#about" class="text-gray-600 hover:text-pink-600">About</a>
+                <a href="#" id="navLoginBtn" class="text-gray-600 hover:text-pink-600">Login</a>
+                <a href="#" id="navSignUpBtn" class="text-gray-600 hover:text-pink-600">Sign Up</a>
+            </div>
+        </div>
+    </nav>
 
-  <nav class="navbar">
-    <ul class="navlinks">
-      <li><a href="#">Ingredient Cost</a></li>
-      <li><a href="#">Sale Report</a></li>
-      <li><a href="#">Financial Summary</a></li>
-    </ul>
-  </nav>
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-pink-400 to-purple-500 text-white text-center py-16">
+        <h1 class="text-4xl font-bold">Welcome to Sweet Delights</h1>
+        <p class="mt-4 text-lg">Indulge in our freshly baked treats made with love.</p>
+    </header>
 
-  <!-- Expense Calculator -->
-  <section class="card">
-    <h2>Ingredient Cost</h2>
-    <div class="form-row">
-      <label for="expense">Expense Description</label>
-      <input type="text" id="expense" placeholder="Expense" />
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-white text-center">
+        <h2 class="text-3xl font-semibold text-pink-600">About Us</h2>
+        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            At Sweet Delights, we believe in the magic of baking. Our team of passionate bakers crafts each pastry with the finest ingredients and a sprinkle of love. Whether you're here for a quick treat or planning a special celebration, we're here to make your day sweeter.
+        </p>
+    </section>
 
-      <label for="amount">Amount Spent</label>
-      <input type="number" id="amount" placeholder="Amount Spent" />
+    <!-- Login and Sign Up Forms -->
+    <section class="py-16 bg-gradient-to-r from-pink-200 to-purple-200 text-center">
+        <h2 class="text-3xl font-semibold text-pink-600">Join Our Sweet Family</h2>
+        <p class="mt-4 text-lg text-gray-600">Sign in or create an account to start your sweet journey with us.</p>
+        <div class="mt-8 space-x-4">
+            <button id="mainLoginBtn" class="inline-block px-6 py-3 text-white bg-pink-600 rounded-lg hover:bg-pink-700">Login</button>
+            <button id="mainSignUpBtn" class="inline-block px-6 py-3 text-pink-600 border-2 border-pink-600 rounded-lg hover:bg-pink-600 hover:text-white">Sign Up</button>
+        </div>
+    </section>
 
-      <button id="addExpense">Add Expense</button>
+    <!-- Login Form -->
+    <div id="loginForm" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full relative">
+            <button id="closeLoginBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                ✕
+            </button>
+            <h3 class="text-2xl font-semibold text-pink-600 mb-4">Login</h3>
+            <form>
+                <div class="mb-4">
+                    <label for="loginEmail" class="block text-sm text-gray-600">Email</label>
+                    <input type="email" id="loginEmail" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                </div>
+                <div class="mb-4 relative">
+                    <label for="loginPassword" class="block text-sm text-gray-600">Password</label>
+                    <input type="password" id="loginPassword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                    <button type="button" id="toggleLoginPassword" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                        👁️
+                    </button>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700">Login</button>
+            </form>
+        </div>
     </div>
-  </section>
 
-  <!-- Sale Report -->
-  <section class="card">
-    <h2>Sale Report</h2>
-    <div class="form-row">
-      <input type="date" id="Saledate" />
-      <select id="products">
-        <option value="cake">Cake</option>
-        <option value="cookies">Cookies</option>
-        <option value="pastry">Pastry</option>
-      </select>
-      <input type="number" id="quantitySold" placeholder="Quantity Sold" />
-      <input type="number" id="price" placeholder="Sale Price" />
-      <button id="addSale">Add Sale</button>
+    <!-- Sign Up Form -->
+    <div id="signUpForm" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full relative">
+            <button id="closeSignUpBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                ✕
+            </button>
+            <h3 class="text-2xl font-semibold text-pink-600 mb-4">Sign Up</h3>
+            <form>
+                <div class="mb-4">
+                    <label for="signUpName" class="block text-sm text-gray-600">Full Name</label>
+                    <input type="text" id="signUpName" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                </div>
+                <div class="mb-4">
+                    <label for="signUpEmail" class="block text-sm text-gray-600">Email</label>
+                    <input type="email" id="signUpEmail" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                </div>
+                <div class="mb-4 relative">
+                    <label for="signUpPassword" class="block text-sm text-gray-600">Password</label>
+                    <input type="password" id="signUpPassword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                    <button type="button" id="toggleSignUpPassword" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                        👁️
+                    </button>
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700">Sign Up</button>
+            </form>
+        </div>
     </div>
 
-    <div id="salesReport">
-      <canvas id="salesChart"></canvas>
-      <table id="salesTable">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>Total</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Data rows will go here -->
-        </tbody>
-      </table>
-    </div>
-  </section>
+    <script>
+        // Toggle password visibility
+        function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const toggleButton = document.getElementById(toggleButtonId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.textContent = "🙈";
+            } else {
+                passwordField.type = "password";
+                toggleButton.textContent = "👁️";
+            }
+        }
 
-  <!-- Financial Summary -->
-  <section class="card">
-    <h3>Financial Summary</h3>
-    <ul>
-      <li><p id="totalExpenditure">Total Expenditure: $0.00</p></li>
-      <li><p id="totalsale">Total Sales: $0.00</p></li>
-      <li><p id="totalRemainder">Remainder: $0.00</p></li>
-    </ul>
-  </section>
+        // Form toggle functionality
+        function setupFormHandlers() {
+            // Get all elements
+            const navLoginBtn = document.getElementById('navLoginBtn');
+            const navSignUpBtn = document.getElementById('navSignUpBtn');
+            const mainLoginBtn = document.getElementById('mainLoginBtn');
+            const mainSignUpBtn = document.getElementById('mainSignUpBtn');
+            const closeLoginBtn = document.getElementById('closeLoginBtn');
+            const closeSignUpBtn = document.getElementById('closeSignUpBtn');
+            const loginForm = document.getElementById('loginForm');
+            const signUpForm = document.getElementById('signUpForm');
 
-  <script type="text/javascript" src="script.js"></script>
+            // Show login form
+            [navLoginBtn, mainLoginBtn].forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginForm.classList.remove('hidden');
+                    signUpForm.classList.add('hidden');
+                });
+            });
+
+            // Show signup form
+            [navSignUpBtn, mainSignUpBtn].forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signUpForm.classList.remove('hidden');
+                    loginForm.classList.add('hidden');
+                });
+            });
+
+            // Close buttons
+            closeLoginBtn.addEventListener('click', () => loginForm.classList.add('hidden'));
+            closeSignUpBtn.addEventListener('click', () => signUpForm.classList.add('hidden'));
+
+            // Close when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === loginForm) loginForm.classList.add('hidden');
+                if (e.target === signUpForm) signUpForm.classList.add('hidden');
+            });
+        }
+
+        // Initialize all functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            setupFormHandlers();
+            
+            // Password toggles
+            document.getElementById('toggleLoginPassword').addEventListener('click', () => {
+                togglePasswordVisibility('loginPassword', 'toggleLoginPassword');
+            });
+            
+            document.getElementById('toggleSignUpPassword').addEventListener('click', () => {
+                togglePasswordVisibility('signUpPassword', 'toggleSignUpPassword');
+            });
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        // Perform any necessary validation here
+        window.location.href = 'shop.html'; // Redirect to shop.html
+    });
+
+    document.getElementById('signUpForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        // Perform any necessary validation here
+        window.location.href = 'shop.html'; // Redirect to shop.html
+    });
+    </script>
 </body>
 </html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweet Delights - Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white min-h-screen">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-purple fixed shadow-md w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-start items-center">
+      <a href="index.html">
+        <img src="ff87fd69bb68c09a6eae55392cebd0c1.jpg" alt="Sweet Delights Logo" class="h-10 w-10 object-contain rounded-full">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Spacer for fixed navbar -->
+  <div class="h-20"></div>
+
+  <!-- Cart Content -->
+  <main class="max-w-4xl mx-auto p-6">
+    <h1 class="text-center text-3xl font-bold text-pink-400 mb-6">Your Cart</h1>
+    <div id="cart-items" class="space-y-4"></div>
+    <div class="mt-6 text-right">
+      <h2 class="text-xl font-bold text-green-400">Total: <span id="total-cost">KSh 0</span></h2>
+    </div>
+    <div class="mt-8 flex justify-between items-center">
+      <a href="home.html" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">⬅ Continue Shopping</a>
+      <button id="checkout-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Proceed to Checkout</button>
+    </div>
+  </main>
+
+  <!-- Cart Logic Script -->
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function removeFromCart(index) {
+      const cart = getCart();
+      if (confirm(`Remove ${cart[index].name} from cart?`)) {
+        cart.splice(index, 1);
+        saveCart(cart);
+        renderCart();
+        alert("Item removed from cart.");
+      }
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      const container = document.getElementById('cart-items');
+      const totalCostElem = document.getElementById('total-cost');
+      container.innerHTML = '';
+
+      if (cart.length === 0) {
+        container.innerHTML = '<p class="text-center text-gray-400">Your cart is empty.</p>';
+        totalCostElem.textContent = 'KSh 0';
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const price = item.price || (item.sizes && item.sizes[0].price) || 0;
+        total += Number(price);
+
+        const div = document.createElement('div');
+        div.className = 'bg-gray-800 rounded-lg p-4 flex justify-between items-center';
+
+        div.innerHTML = `
+          <div>
+            <h3 class="text-pink-400 text-lg font-semibold">${item.name}</h3>
+            <p class="text-gray-300 text-sm">${item.description}</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <p class="text-green-400 font-bold">KSh ${price}</p>
+            <button onclick="removeFromCart(${index})" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">Remove</button>
+          </div>
+        `;
+
+        container.appendChild(div);
+      });
+
+      totalCostElem.textContent = `KSh ${total}`;
+    }
+
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      alert("Proceeding to checkout...");
+    });
+
+    renderCart();
+  </script>
+
+</body>
+</html>

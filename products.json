@@ -1,0 +1,281 @@
+{
+    "products": {
+      "Cakes": [
+        {
+          "name": "chocolate mud",
+          "image_url": "media/chocolate cake.jpeg",
+          "description": "Rich and moist chocolate layer cake with chocolate frosting.",
+          "sizes": [
+            { "label": "Small", "price": 1565 },
+            { "label": "Medium", "price": 2540 },
+            { "label": "Large", "price": 3852 }
+          ]
+        },
+        {
+          "name": "Vanilla Sponge Cake",
+          "image_url": "media/vanilla sponge cake.webp",
+          "description": "Fluffy vanilla sponge layered with cream.",
+          "sizes": [
+            { "label": "Small", "price": 1391 },
+            { "label": "Medium", "price": 2279 },
+            { "label": "Large", "price": 3861 }
+          ]
+        },
+        {
+          "name": "Red Velvet Cake",
+          "image_url": "media/red velvet.jpeg",
+          "description": "Classic red velvet with cream cheese frosting.",
+          "sizes": [
+            { "label": "Small", "price": 1342 },
+            { "label": "Medium", "price": 2252 },
+            { "label": "Large", "price": 3418 }
+          ]
+        },
+        {
+          "name": "Carrot Cake",
+          "image_url": "media/carrot cake.webp",
+          "description": "Moist carrot cake with spiced layers and cream cheese.",
+          "sizes": [
+            { "label": "Small", "price": 1496 },
+            { "label": "Medium", "price": 2395 },
+            { "label": "Large", "price": 3021 }
+          ]
+        },
+        {
+          "name": "Black Forest Cake",
+          "image_url": "media/black forest.jpeg",
+          "description": "Chocolate and cherry layered delight.",
+          "sizes": [
+            { "label": "Small", "price": 1568 },
+            { "label": "Medium", "price": 2445 },
+            { "label": "Large", "price": 3949 }
+          ]
+        },
+        {
+          "name": "Cheesecake",
+          "image_url": "media/cheese cake.jpg",
+          "description": "Creamy cheesecake with a graham cracker crust.",
+          "sizes": [
+            { "label": "Small", "price": 1446 },
+            { "label": "Medium", "price": 2314 },
+            { "label": "Large", "price": 3886 }
+          ]
+        },
+        {
+          "name": "Lemon Drizzle Cake",
+          "image_url": "media/Lemon Drizzle Cake.jpeg",
+          "description": "Zesty lemon cake with a sugary glaze.",
+          "sizes": [
+            { "label": "Small", "price": 1547 },
+            { "label": "Medium", "price": 2540 },
+            { "label": "Large", "price": 3906 }
+          ]
+        },
+        {
+          "name": "Pineapple Upside-Down Cake",
+          "image_url": "media/Pineapple Upside-Down Cake.webp",
+          "description": "Sweet pineapple base with a buttery sponge.",
+          "sizes": [
+            { "label": "Small", "price": 1463 },
+            { "label": "Medium", "price": 2366 },
+            { "label": "Large", "price": 3516 }
+          ]
+        },
+        {
+          "name": "Marble Cake",
+          "image_url": "media/Marble Cake.webp",
+          "description": "A swirl of chocolate and vanilla in one slice.",
+          "sizes": [
+            { "label": "Small", "price": 1578 },
+            { "label": "Medium", "price": 2457 },
+            { "label": "Large", "price": 3069 }
+          ]
+        },
+        {
+          "name": "Opera Cake",
+          "image_url": "media/Opera Cake.avif",
+          "description": "Elegant French cake with almond, coffee, and chocolate.",
+          "sizes": [
+            { "label": "Small", "price": 1306 },
+            { "label": "Medium", "price": 2208 },
+            { "label": "Large", "price": 3891 }
+          ]
+        },
+        {
+          "name": "Tiramisu Cake",
+          "image_url": "media/Tiramisu Cake.avif",
+          "description": "Coffee-infused layers with mascarpone cream.",
+          "sizes": [
+            { "label": "Small", "price": 1249 },
+            { "label": "Medium", "price": 2055 },
+            { "label": "Large", "price": 3096 }
+          ]
+        },
+        {
+          "name": "Funfetti Cake",
+          "image_url": "media/Funfetti Cake.avif",
+          "description": "Colorful sprinkle-filled party cake.",
+          "sizes": [
+            { "label": "Small", "price": 1381 },
+            { "label": "Medium", "price": 2307 },
+            { "label": "Large", "price": 3911 }
+          ]
+        },
+        {
+          "name": "Angel Food Cake",
+          "image_url": "media/Angel Food Cake.jpeg",
+          "description": "Light and fluffy cake with a subtle sweetness.",
+          "sizes": [
+            { "label": "Small", "price": 1449 },
+            { "label": "Medium", "price": 2404 },
+            { "label": "Large", "price": 3038 }
+          ]
+        },
+        {
+          "name": "Butter Cake",
+          "image_url": "media/Butter Cake.avif",
+          "description": "Classic buttery sponge with rich flavor.",
+          "sizes": [
+            { "label": "Small", "price": 1277 },
+            { "label": "Medium", "price": 2216 },
+            { "label": "Large", "price": 3724 }
+          ]
+        },
+        {
+          "name": "German Chocolate Cake",
+          "image_url": "media/German Chocolate Cake.jpeg",
+          "description": "Chocolate cake layered with coconut-pecan frosting.",
+          "sizes": [
+            { "label": "Small", "price": 1449 },
+            { "label": "Medium", "price": 2427 },
+            { "label": "Large", "price": 3635 }
+          ]
+        }
+      ],
+      "Cookies": [
+        {
+          "name": "Chocolate Chip Cookie",
+          "image_url": "media/choco chip.jpeg",
+          "description": "Classic cookie for a sweet treat.",
+          "price": 2.5
+        },
+        {
+          "name": "Oatmeal Raisin Cookie",
+          "image_url": "media/Oatmeal Raisin Cookie.jpeg",
+          "description": "Healthy cookie for a sweet treat.",
+          "price": 2.3
+        },
+        {
+          "name": "Peanut Butter Cookie",
+          "image_url": "media/Peanut Butter Cookie.webp",
+          "description": "Nutty cookie for a sweet treat.",
+          "price": 2.7
+        },
+        {
+          "name": "Sugar Cookie",
+          "image_url": "media/Sugar Cookie.avif",
+          "description": "Sweet cookie for a sweet treat.",
+          "price": 2.4
+        },
+        {
+          "name": "Double Chocolate Cookie",
+          "image_url": "media/Double Chocolate Cookie.webp",
+          "description": "Rich cookie for a sweet treat.",
+          "price": 3.0
+        },
+        {
+          "name": "Snickerdoodle Cookie",
+          "image_url": "media/Snickerdoodle Cookie.avif",
+          "description": "Cinnamon cookie for a sweet treat.",
+          "price": 2.6
+        },
+        {
+          "name": "Macadamia Nut Cookie",
+          "image_url": "media/Macadamia Nut Cookie.webp",
+          "description": "Crunchy cookie for a sweet treat.",
+          "price": 3.2
+        },
+        {
+          "name": "White Chocolate Cookie",
+          "image_url": "media/White Chocolate Cookie.avif",
+          "description": "Creamy cookie for a sweet treat.",
+          "price": 2.9
+        },
+        {
+          "name": "Molasses Cookie",
+          "image_url": "media/Molasses Cookie.jpg",
+          "description": "Spiced cookie for a sweet treat.",
+          "price": 2.8
+        },
+        {
+          "name": "Coconut Cookie",
+          "image_url": "media/Coconut Cookie.jpg",
+          "description": "Tropical cookie for a sweet treat.",
+          "price": 3.1
+        }
+      ],
+      "Pastries": [
+        {
+          "name": "Croissant",
+          "image_url": "media/Croissant.webp",
+          "description": "Flaky pastry baked fresh daily.",
+          "price": 3.5
+        },
+        {
+          "name": "Pain au Chocolat",
+          "image_url": "media/Pain au Chocolat.jpeg",
+          "description": "Chocolate-filled pastry baked fresh daily.",
+          "price": 3.7
+        },
+        {
+          "name": "Danish",
+          "image_url": "media/Danish.jpeg",
+          "description": "Fruity pastry baked fresh daily.",
+          "price": 3.6
+        },
+        {
+          "name": "Apple Turnover",
+          "image_url": "media/Apple Turnover.jpeg",
+          "description": "Golden pastry baked fresh daily.",
+          "price": 3.8
+        },
+        {
+          "name": "Eclair",
+          "image_url": "media/Eclair.jpeg",
+          "description": "Cream-filled pastry baked fresh daily.",
+          "price": 4.0
+        },
+        {
+          "name": "Palmier",
+          "image_url": "media/Palmier.jpeg",
+          "description": "Caramelized pastry baked fresh daily.",
+          "price": 3.3
+        },
+        {
+          "name": "Cinnamon Roll",
+          "image_url": "media/Cinnamon Roll.jpeg",
+          "description": "Swirled pastry baked fresh daily.",
+          "price": 3.9
+        },
+        {
+          "name": "Strudel",
+          "image_url": "media/Strudel.jpeg",
+          "description": "Layered pastry baked fresh daily.",
+          "price": 3.8
+        },
+        {
+          "name": "Baklava",
+          "image_url": "media/Baklava.webp",
+          "description": "Nutty pastry baked fresh daily.",
+          "price": 4.2
+        },
+        {
+          "name": "Choux Puff",
+          "image_url": "media/Choux Puff.webp",
+          "description": "Light pastry baked fresh daily.",
+          "price": 3.6
+        }
+      ]
+    }
+  }
+  
