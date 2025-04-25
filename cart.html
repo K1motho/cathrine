@@ -6,13 +6,18 @@
   <title>Sweet Delights - Cart</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-white min-h-screen">
+<body class="bg-black text-white min-h-screen p-6">
 
   <!-- Navigation Bar -->
   <nav class="bg-purple fixed shadow-md w-full z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-start items-center">
-      <a href="index.html">
-        <img src="ff87fd69bb68c09a6eae55392cebd0c1.jpg" alt="Sweet Delights Logo" class="h-10 w-10 object-contain rounded-full">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-10">
+        <a href="index.html">
+          <img src="ff87fd69bb68c09a6eae55392cebd0c1.jpg" alt="Sweet Delights Logo" class="h-10 w-10 object-contain rounded-full">
+        </a>
+      </div>
+      <a href="cart.html">
+        <span class="text-white text-lg hover:text-pink-400">🛒 Cart</span>
       </a>
     </div>
   </nav>
@@ -20,15 +25,19 @@
   <!-- Spacer for fixed navbar -->
   <div class="h-20"></div>
 
+  <!-- Notification Popup -->
+  <div id="popup" class="hidden fixed top-4 right-4 bg-pink-500 text-white px-4 py-2 rounded shadow-lg z-50"></div>
+
   <!-- Cart Content -->
-  <main class="max-w-4xl mx-auto p-6">
+  <main class="max-w-4xl mx-auto">
     <h1 class="text-center text-3xl font-bold text-pink-400 mb-6">Your Cart</h1>
     <div id="cart-items" class="space-y-4"></div>
     <div class="mt-6 text-right">
       <h2 class="text-xl font-bold text-green-400">Total: <span id="total-cost">KSh 0</span></h2>
     </div>
     <div class="mt-8 flex justify-between items-center">
-      <a href="home.html" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">⬅ Continue Shopping</a>
+      <a href="shop.html" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">⬅ Continue Shopping</a>
+      <button id="clear-cart-btn" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">Clear All</button>
       <button id="checkout-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Proceed to Checkout</button>
     </div>
   </main>
@@ -43,13 +52,30 @@
       localStorage.setItem('cart', JSON.stringify(cart));
     }
 
+    function showPopup(message) {
+      const popup = document.getElementById('popup');
+      popup.textContent = message;
+      popup.classList.remove('hidden');
+      setTimeout(() => {
+        popup.classList.add('hidden');
+      }, 3000);
+    }
+
     function removeFromCart(index) {
       const cart = getCart();
       if (confirm(`Remove ${cart[index].name} from cart?`)) {
         cart.splice(index, 1);
         saveCart(cart);
         renderCart();
-        alert("Item removed from cart.");
+        showPopup("Item removed from cart.");
+      }
+    }
+
+    function clearCart() {
+      if (confirm("Are you sure you want to clear your entire cart?")) {
+        localStorage.removeItem('cart');
+        renderCart();
+        showPopup("Cart cleared.");
       }
     }
 
@@ -68,7 +94,7 @@
       let total = 0;
 
       cart.forEach((item, index) => {
-        const price = item.price || (item.sizes && item.sizes[0].price) || 0;
+        const price = item.price || 0;
         total += Number(price);
 
         const div = document.createElement('div');
@@ -89,11 +115,17 @@
       });
 
       totalCostElem.textContent = `KSh ${total}`;
+      localStorage.setItem('cartTotal', total);
     }
 
     document.getElementById('checkout-btn').addEventListener('click', () => {
-      alert("Proceeding to checkout...");
+      showPopup("Proceeding to checkout...");
+      setTimeout(() => {
+        window.location.href = 'checkout.html';
+      }, 1500);
     });
+
+    document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
 
     renderCart();
   </script>

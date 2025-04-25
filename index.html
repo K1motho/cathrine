@@ -83,6 +83,10 @@
                     <label for="signUpEmail" class="block text-sm text-gray-600">Email</label>
                     <input type="email" id="signUpEmail" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
                 </div>
+                <div class="mb-4">
+                    <label for="phoneNumber" class="block text-sm text-gray-600">Phone Number </label>
+                    <input type="number" id="phoneNumber" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
+                </div>
                 <div class="mb-4 relative">
                     <label for="signUpPassword" class="block text-sm text-gray-600">Password</label>
                     <input type="password" id="signUpPassword" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-600" required>
@@ -96,85 +100,79 @@
     </div>
 
     <script>
-        // Toggle password visibility
-        function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
-            const passwordField = document.getElementById(passwordFieldId);
-            const toggleButton = document.getElementById(toggleButtonId);
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                toggleButton.textContent = "🙈";
-            } else {
-                passwordField.type = "password";
-                toggleButton.textContent = "👁️";
-            }
-        }
-
-        // Form toggle functionality
-        function setupFormHandlers() {
-            // Get all elements
-            const navLoginBtn = document.getElementById('navLoginBtn');
-            const navSignUpBtn = document.getElementById('navSignUpBtn');
-            const mainLoginBtn = document.getElementById('mainLoginBtn');
-            const mainSignUpBtn = document.getElementById('mainSignUpBtn');
-            const closeLoginBtn = document.getElementById('closeLoginBtn');
-            const closeSignUpBtn = document.getElementById('closeSignUpBtn');
-            const loginForm = document.getElementById('loginForm');
-            const signUpForm = document.getElementById('signUpForm');
-
-            // Show login form
-            [navLoginBtn, mainLoginBtn].forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loginForm.classList.remove('hidden');
-                    signUpForm.classList.add('hidden');
-                });
-            });
-
-            // Show signup form
-            [navSignUpBtn, mainSignUpBtn].forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    signUpForm.classList.remove('hidden');
-                    loginForm.classList.add('hidden');
-                });
-            });
-
-            // Close buttons
-            closeLoginBtn.addEventListener('click', () => loginForm.classList.add('hidden'));
-            closeSignUpBtn.addEventListener('click', () => signUpForm.classList.add('hidden'));
-
-            // Close when clicking outside
-            window.addEventListener('click', (e) => {
-                if (e.target === loginForm) loginForm.classList.add('hidden');
-                if (e.target === signUpForm) signUpForm.classList.add('hidden');
-            });
-        }
-
-        // Initialize all functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            setupFormHandlers();
-            
-            // Password toggles
-            document.getElementById('toggleLoginPassword').addEventListener('click', () => {
-                togglePasswordVisibility('loginPassword', 'toggleLoginPassword');
-            });
-            
-            document.getElementById('toggleSignUpPassword').addEventListener('click', () => {
-                togglePasswordVisibility('signUpPassword', 'toggleSignUpPassword');
-            });
-        });
-
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        // Perform any necessary validation here
-        window.location.href = 'shop.html'; // Redirect to shop.html
-    });
-
-    document.getElementById('signUpForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        // Perform any necessary validation here
-        window.location.href = 'shop.html'; // Redirect to shop.html
-    });
-    </script>
+      // Toggle password visibility
+      function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
+          const passwordField = document.getElementById(passwordFieldId);
+          const toggleButton = document.getElementById(toggleButtonId);
+          if (passwordField.type === "password") {
+              passwordField.type = "text";
+              toggleButton.textContent = "🙈";
+          } else {
+              passwordField.type = "password";
+              toggleButton.textContent = "👁️";
+          }
+      }
+  
+      // Form toggle functionality
+      function setupFormHandlers() {
+          const navLoginBtn = document.getElementById('navLoginBtn');
+          const navSignUpBtn = document.getElementById('navSignUpBtn');
+          const mainLoginBtn = document.getElementById('mainLoginBtn');
+          const mainSignUpBtn = document.getElementById('mainSignUpBtn');
+          const closeLoginBtn = document.getElementById('closeLoginBtn');
+          const closeSignUpBtn = document.getElementById('closeSignUpBtn');
+          const loginForm = document.getElementById('loginForm');
+          const signUpForm = document.getElementById('signUpForm');
+  
+          [navLoginBtn, mainLoginBtn].forEach(btn => {
+              btn.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  loginForm.classList.remove('hidden');
+                  signUpForm.classList.add('hidden');
+              });
+          });
+  
+          [navSignUpBtn, mainSignUpBtn].forEach(btn => {
+              btn.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  signUpForm.classList.remove('hidden');
+                  loginForm.classList.add('hidden');
+              });
+          });
+  
+          closeLoginBtn.addEventListener('click', () => loginForm.classList.add('hidden'));
+          closeSignUpBtn.addEventListener('click', () => signUpForm.classList.add('hidden'));
+  
+          window.addEventListener('click', (e) => {
+              if (e.target === loginForm) loginForm.classList.add('hidden');
+              if (e.target === signUpForm) signUpForm.classList.add('hidden');
+          });
+      }
+  
+      // Initialize functionality after DOM loads
+      document.addEventListener('DOMContentLoaded', () => {
+          setupFormHandlers();
+  
+          document.getElementById('toggleLoginPassword').addEventListener('click', () => {
+              togglePasswordVisibility('loginPassword', 'toggleLoginPassword');
+          });
+  
+          document.getElementById('toggleSignUpPassword').addEventListener('click', () => {
+              togglePasswordVisibility('signUpPassword', 'toggleSignUpPassword');
+          });
+  
+          // Now safely bind submit handlers inside DOMContentLoaded
+          document.getElementById('loginForm').addEventListener('submit', function(event) {
+              event.preventDefault();
+              window.location.href = 'shop.html';
+          });
+  
+          document.getElementById('signUpForm').addEventListener('submit', function(event) {
+              event.preventDefault();
+              window.location.href = 'shop.html';
+          });
+      });
+  </script>
+  
 </body>
 </html>

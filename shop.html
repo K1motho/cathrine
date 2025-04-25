@@ -4,55 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sweet Delights - Home</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-black text-white">
 
-    <nav class="bg-purple fixed shadow-md">
-        <div class="max-w-7xl mx-auto px-20 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-10">
+    <!-- Navbar -->
+    <nav class="bg-purple fixed w-full shadow-md z-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-20 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-6 md:space-x-10">
                 <a href="index.html">
-                    <img src="ff87fd69bb68c09a6eae55392cebd0c1.jpg" alt="Sweet Delights Logo" class="h-10 w-10 object-contain">
+                    <img src="ff87fd69bb68c09a6eae55392cebd0c1.jpg" alt="Sweet Delights Logo" class="h-10 w-10 object-contain rounded-full">
                 </a>
                 <a href="#cakes" class="text-white hover:text-pink-300 font-semibold">Cakes</a>
                 <a href="#cookies" class="text-white hover:text-pink-300 font-semibold">Cookies</a>
                 <a href="#pastries" class="text-white hover:text-pink-300 font-semibold">Pastries</a>
             </div>
-            <a href="cart.html">
-                <img src="media/cart.webp" alt="Cart" class="h-10 w-10 object-contain rounded-full">
-              </a>
+            <a href="cart.html" class="text-white hover:text-pink-300 font-semibold">Cart</a>
         </div>
     </nav>
 
-    <!-- Explanation Card -->
-    <section class="bg-white shadow-md rounded-lg max-w-4xl mx-auto mt-8 p-6 text-center">
+    <!-- Welcome Card -->
+    <section class="bg-white text-black shadow-md rounded-lg max-w-4xl mx-auto mt-28 p-6 text-center">
         <h3 class="text-2xl font-semibold text-pink-600 mb-2">Welcome to Sweet Delights!</h3>
         <p class="text-gray-700 text-lg">
             Explore our delicious range of baked goodies. Choose from cakes, cookies, and pastries. Hover over categories to select quantity and treat yourself to something sweet!
         </p>
     </section>
 
-    <body class="bg-black text-white p-6">
+    <!-- Product Sections -->
+    <main class="p-6 mt-10">
         <h1 class="text-center text-pink-400 text-4xl font-bold mb-8">Our Delicious Bakery Items</h1>
-      
-        <div class="mb-10">
-          <h2 class="text-purple-300 text-2xl font-semibold border-b-2 border-purple-300 pb-2">Cakes</h2>
-          <div class="flex flex-wrap justify-center gap-6 mt-4" id="cakes"></div>
-        </div>
-      
-        <div class="mb-10">
-          <h2 class="text-purple-300 text-2xl font-semibold border-b-2 border-purple-300 pb-2">Cookies</h2>
-          <div class="flex flex-wrap justify-center gap-6 mt-4" id="cookies"></div>
-        </div>
-      
-        <div>
-          <h2 class="text-purple-300 text-2xl font-semibold border-b-2 border-purple-300 pb-2">Pastries</h2>
-          <div class="flex flex-wrap justify-center gap-6 mt-4" id="pastries"></div>
+
+        <div class="mb-10" id="cakes">
+            <h2 class="text-purple-300 text-2xl font-semibold border-b-2 border-purple-300 pb-2">Cakes</h2>
+            <div class="flex flex-wrap justify-center gap-6 mt-4"></div>
         </div>
 
-       <script>
-                function getCart() {
+        <div class="mb-10" id="cookies">
+            <h2 class="text-purple-300 text-2xl font-semibold border-b-2 border-purple-300 pb-2">Cookies</h2>
+            <div class="flex flex-wrap justify-center gap-6 mt-4"></div>
+        </div>
+
+        <div id="pastries">
+            <h2 class="text-purple-300 text-2xl font-semibold border-b-2 border-purple-300 pb-2">Pastries</h2>
+            <div class="flex flex-wrap justify-center gap-6 mt-4"></div>
+        </div>
+    </main>
+
+    <!-- Product Logic Script -->
+    <script>
+        function getCart() {
             return JSON.parse(localStorage.getItem('cart')) || [];
         }
 
@@ -60,29 +67,41 @@
             localStorage.setItem('cart', JSON.stringify(cart));
         }
 
-        function addToCart(item) {
+        function addToCart(name, description, image, price) {
+            const cartItem = { name, description, image, price };
             const cart = getCart();
-            cart.push(item);
+            cart.push(cartItem);
             saveCart(cart);
-            alert(`${item.name} added to cart!`);
+            alert(`${name} added to cart!`);
         }
 
         function createProductCard(product, isCake = false) {
             const div = document.createElement('div');
             div.className = 'bg-gray-800 rounded-2xl shadow-lg p-4 w-72 transition-transform hover:-translate-y-1';
+
+            let options = '';
+            if (isCake) {
+                options = product.sizes.map(size => `
+                    <button onclick='addToCart("${product.name} (${size.label})", "${product.description}", "${product.image_url}", ${size.price})' class='bg-pink-500 hover:bg-pink-600 text-white text-sm px-3 py-1 rounded mr-2 mt-2'>${size.label} - KSh ${size.price}</button>
+                `).join('');
+            }
+
             const priceDisplay = isCake
-                ? product.sizes.map(size => `<span class="inline-block bg-pink-400 text-black text-xs font-bold rounded px-2 py-1 mr-2 mt-1">${size.label}: KSh ${size.price}</span>`).join('')
+                ? `<div class='mt-2'>${options}</div>`
                 : `<p class='text-green-400 font-bold mt-2'>KSh ${Math.round(product.price)}</p>`;
 
-            const addToCartButton = `<button onclick='addToCart(${JSON.stringify(product).replace(/'/g, "&#39;")})' class='mt-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700'>Add to Cart</button>`;
+            const addToCartButton = !isCake
+                ? `<button onclick='addToCart("${product.name}", "${product.description}", "${product.image_url}", ${product.price})' class='mt-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 w-full'>Add to Cart</button>`
+                : '';
 
             div.innerHTML = `
                 <img src="${product.image_url}" alt="${product.name}" class="w-full h-48 object-cover rounded-lg">
                 <h3 class="text-pink-400 text-xl font-semibold mt-4">${product.name}</h3>
                 <p class="text-gray-300 text-sm mt-1">${product.description}</p>
-                <div class="mt-2">${priceDisplay}</div>
+                ${priceDisplay}
                 ${addToCartButton}
             `;
+
             return div;
         }
 
@@ -90,13 +109,13 @@
             .then(res => res.json())
             .then(data => {
                 data.products.Cakes.forEach(product => {
-                    document.getElementById('cakes').appendChild(createProductCard(product, true));
+                    document.querySelector('#cakes div').appendChild(createProductCard(product, true));
                 });
                 data.products.Cookies.forEach(product => {
-                    document.getElementById('cookies').appendChild(createProductCard(product));
+                    document.querySelector('#cookies div').appendChild(createProductCard(product));
                 });
                 data.products.Pastries.forEach(product => {
-                    document.getElementById('pastries').appendChild(createProductCard(product));
+                    document.querySelector('#pastries div').appendChild(createProductCard(product));
                 });
             });
     </script>
